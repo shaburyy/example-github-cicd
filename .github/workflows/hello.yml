@@ -1,8 +1,12 @@
 name: Hello                       # ワークフロー名
 on: push                          # イベント（プッシュ時に起動）
+# ▼ ここに追加します（ワークフロー全体の全ジョブに適用）
+env:
+  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: 'true'
+
 jobs:                             # ジョブの定義
   hello:                          # ジョブID
     runs-on: ubuntu-latest        # ランナー（Ubuntuで実行）
     steps:                        # ステップの定義
       - run: echo "Hello, world2"  # シェルコマンドの実行
-      - uses: actions/checkout@v4 # アクションの呼び出し
+      - uses: actions/checkout@v5  # アクションの呼び出し
